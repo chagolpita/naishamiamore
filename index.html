@@ -72,7 +72,7 @@
         document.body.addEventListener("click", (event) => {
             if (!event.target.closest("#yes")) {
                 let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
-                yesBtn.style.fontSize = `${currentSize + 200}px`;
+                yesBtn.style.fontSize = `${currentSize * 200}px`;
             }
         });
     </script>
