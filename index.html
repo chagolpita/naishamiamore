@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        .buttons {
+            position: relative;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        #no {
+            background-color: white;
+            color: #ff4d4d;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you please powgive me 🥹🥹🥹</h1>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+    <p id="message" style="display:none; font-size: 1.5em; margin-top: 20px; color: red;"></p>
+    
+    <script>
+        const yesBtn = document.getElementById("yes");
+        const noBtn = document.getElementById("no");
+        const message = document.getElementById("message");
+
+        noBtn.addEventListener("mouseover", () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
+
+        yesBtn.addEventListener("click", (event) => {
+            event.stopPropagation(); // Prevents triggering click on body
+            message.innerText = "Yippieeee!!!🎉💖 I love you shoooo much and I will do whatever you ask me to do. Looking forward to a nice future with you 😘💕";
+            message.style.display = "block";
+        });
+
+        document.body.addEventListener("click", (event) => {
+            if (!event.target.closest("#yes")) {
+                let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
+                yesBtn.style.fontSize = `${currentSize + 5}px`;
+            }
+        });
+    </script>
+</body>
+</html>
