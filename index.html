@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Powgive me?</title>
+    <title>Be My Valentine?</title>
     <style>
         body {
             display: flex;
@@ -54,12 +54,14 @@
         const noBtn = document.getElementById("no");
         const message = document.getElementById("message");
 
-        noBtn.addEventListener("mouseover", () => {
+        function moveButton() {
             const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
             const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-        });
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        noBtn.addEventListener("mouseover", moveButton);
+        noBtn.addEventListener("click", moveButton);
 
         yesBtn.addEventListener("click", (event) => {
             event.stopPropagation(); // Prevents triggering click on body
